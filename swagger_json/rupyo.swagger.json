@@ -1,0 +1,5169 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": " Rupyo api Project",
+        "description": "Rupyo api Project Application API",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "api.rupyo.in",
+    "basePath": "/",
+    "tagss": [
+        {
+            "name": "Rupyo"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "description": "Enter your bearer token in the format **Bearer &lt;token>**"
+        }
+    },
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "tags": [
+        {
+            "name": "Rupyo"
+        }
+    ],
+    "paths": {
+        "/attendance/punchin": {
+            "post": {
+                "tags": [
+                    "Punchin and puchout"
+                ],
+                "summary": "Punchin and puchout",
+                "description": "Store data of employee punch in and punch out",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "time",
+                        "in": "body",
+                        "required": true,
+                        "description": "punch time"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Attendance marked successfully"
+                    }
+                }
+            }
+        },
+        "/attendance/list": {
+            "post": {
+                "tags": [
+                    "Attendance list"
+                ],
+                "summary": "Attendance list",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Attendance list",
+                "parameters": [
+                    {
+                        "name": "employee_id",
+                        "in": "body",
+                        "required": false,
+                        "description": "Employee object id"
+                    },
+                    {
+                        "name": "company_id",
+                        "in": "body",
+                        "required": false,
+                        "description": "Company object id"
+                    },
+                    {
+                        "name": "status",
+                        "in": "body",
+                        "required": false,
+                        "description": "Attendance status"
+                    },
+                    {
+                        "name": "search_name",
+                        "in": "body",
+                        "required": false,
+                        "description": "Search by employees name"
+                    },
+                    {
+                        "name": "days_filter",
+                        "in": "body",
+                        "required": false,
+                        "description": "Filter by this month, last month, last three month, this year"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/attendance/editattendance": {
+            "post": {
+                "tags": [
+                    "Update attendance"
+                ],
+                "summary": "Update attendance",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Update attendance",
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "body",
+                        "required": true,
+                        "description": "Attendance object id"
+                    },
+                    {
+                        "name": "status",
+                        "in": "body",
+                        "required": true,
+                        "description": "Attendance status number"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Attendance updated successfully."
+                    }
+                }
+            }
+        },
+
+
+
+        "/csv_download/rupyo_admin": {
+            "post": {
+                "tags": [
+                    "Csv download rupyo admin"
+                ],
+                "summary": "Csv download rupyo admin",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Csv download rupyo admin",
+                "parameters": [
+                    {
+                        "name": "search_name",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Rupyo admin csv file Export successfully"
+                    }
+                }
+            }
+        },
+        "/csv_download/employer": {
+            "post": {
+                "tags": [
+                    "Csv download employer"
+                ],
+                "summary": "Csv download employer",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Csv download employer",
+                "parameters": [
+                    {
+                        "name": "search_name",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employer csv file Export successfully"
+                    }
+                }
+            }
+        },
+        "/csv_download/employee": {
+            "post": {
+                "tags": [
+                    "Csv download employee"
+                ],
+                "summary": "Csv download employee",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Csv download employee",
+                "parameters": [
+                    {
+                        "name": "search_name",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employee csv file Export successfully"
+                    }
+                }
+            }
+        },
+        "/csv_download/transaction": {
+            "post": {
+                "tags": [
+                    "Csv download transactions"
+                ],
+                "summary": "Csv download transactions",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Csv download transactions",
+                "parameters": [
+                    {
+                        "name": "search_name",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Transactions csv file Export successfully"
+                    }
+                }
+            }
+        },
+        "/csv_download/attendance": {
+            "post": {
+                "tags": [
+                    "Csv download attendance"
+                ],
+                "summary": "Csv download attendance",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Csv download attendance",
+                "parameters": [
+                    {
+                        "name": "search_name",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Attendance csv file Export successfully"
+                    }
+                }
+            }
+        },
+
+
+
+        "/employees/signin": {
+            "post": {
+                "tags": [
+                    "Employee sign in"
+                ],
+                "summary": "Employee sign in",
+                "description": "Employee sign in throw phone number and pin.",
+                "parameters": [
+                    {
+                        "name": "mobile_number",
+                        "in": "body",
+                        "required": true,
+                        "description": "employee registered mobile number"
+                    },
+                    {
+                        "name": "pin",
+                        "in": "body",
+                        "required": true,
+                        "description": "Employee 4 digit pin number."
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "You have logged in."
+                    }
+                }
+            }
+        },
+        "/employees/autosignin": {
+            "get": {
+                "tags": [
+                    "Employee auto signin"
+                ],
+                "summary": "Employee auto signin",
+                "description": "Employee auto signin throw Jwt token",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "You have logged in."
+                    }
+                }
+            }
+        },
+        "/employees/createemployee": {
+            "post": {
+                "tags": [
+                    "Create employee"
+                ],
+                "summary": "Create employee",
+                "description": "Create and update employee",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "body",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "name": "first_name",
+                        "in": "body",
+                        "required": true,
+                        "description": ""
+                    },
+                    {
+                        "name": "middle_name",
+                        "in": "body",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "name": "last_name",
+                        "in": "body",
+                        "required": true,
+                        "description": ""
+                    },
+                    {
+                        "name": "rupyo_company_code",
+                        "in": "body",
+                        "required": true,
+                        "description": ""
+                    },
+                    {
+                        "name": "mobile_number",
+                        "in": "body",
+                        "required": true,
+                        "description": ""
+                    },
+                    {
+                        "name": "net_salary",
+                        "in": "body",
+                        "required": true,
+                        "description": ""
+                    },
+                    {
+                        "name": "bank_name",
+                        "in": "body",
+                        "required": true,
+                        "description": "This details saved in encrypted format."
+                    },
+                    {
+                        "name": "account_number",
+                        "in": "body",
+                        "required": true,
+                        "description": "This details saved in encrypted format."
+                    },
+                    {
+                        "name": "ifsc_code",
+                        "in": "body",
+                        "required": true,
+                        "description": "This details saved in encrypted format."
+                    },
+                    {
+                        "name": "pan_card",
+                        "in": "body",
+                        "required": true,
+                        "description": "This details saved in encrypted format."
+                    },
+                    {
+                        "name": "employee_id",
+                        "in": "body",
+                        "required": true,
+                        "description": ""
+                    },
+                    {
+                        "name": "employee_sys_id",
+                        "in": "body",
+                        "required": true,
+                        "description": ""
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employees data inserted successfully"
+                    }
+                }
+            }
+        },
+        "/employees/employeeslist": {
+            "post": {
+                "tags": [
+                    "Employees list"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "summary": "Get all employees List",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "body",
+                        "required": false
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "body",
+                        "required": false
+                    },
+                    {
+                        "name": "company_id",
+                        "in": "body",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/employees/findemployee": {
+            "post": {
+                "tags": [
+                    "Find employee"
+                ],
+                "summary": "Find employee",
+                "description": "Find employee",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "employee_id",
+                        "in": "body",
+                        "required": true,
+                        "description": "Employee object id"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/employees/creditlimit": {
+            "post": {
+                "tags": [
+                    "Update creditlimit bulk"
+                ],
+                "summary": "Update creditlimit bulk",
+                "description": "Update creditlimit",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "employee_id",
+                        "in": "body",
+                        "required": true
+                    },
+                    {
+                        "name": "rupyo_credit_limit",
+                        "in": "body",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Credit limit updated successfully."
+                    }
+                }
+            }
+        },
+        "/employees/changestatus": {
+            "post": {
+                "tags": [
+                    "Change employees status"
+                ],
+                "summary": "Change status",
+                "description": "Change status",
+                "parameters": [
+                    {
+                        "name": "employee_id",
+                        "in": "body",
+                        "required": true
+                    },
+                    {
+                        "name": "status",
+                        "in": "body",
+                        "required": true
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/employees/register": {
+            "post": {
+                "tags": [
+                    "New employee registration"
+                ],
+                "summary": "New employee registration",
+                "description": "New employee registration",
+                "parameters": [
+                    {
+                        "name": "company_code, mobile_number",
+                        "in": "body",
+                        "required": true,
+                        "description": "8 digit rupyo company code."
+                    },
+                    {
+                        "name": "mobile_number",
+                        "in": "body",
+                        "required": true,
+                        "description": "Employee registered mobile number."
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OTP sent successfully."
+                    }
+                }
+            }
+        },
+        "/employees/verify": {
+            "post": {
+                "tags": [
+                    "Otp verify"
+                ],
+                "summary": "Otp verify",
+                "description": "Employee registration OTP verify",
+                "parameters": [
+                    {
+                        "name": "otp",
+                        "in": "body",
+                        "required": true,
+                        "description": "OTP"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OTP verified successfully."
+                    }
+                }
+            }
+        },
+        "/employees/generatepin": {
+            "post": {
+                "tags": [
+                    "Pin generation"
+                ],
+                "summary": "Pin generation",
+                "description": "After OTP verification set four digit pin.",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "description": "short token"
+                    },
+                    {
+                        "name": "pin",
+                        "in": "body",
+                        "required": true,
+                        "description": "Four digit pin number"
+                    },
+                    {
+                        "name": "verify_pin",
+                        "in": "body",
+                        "required": true,
+                        "description": "Four digit verify pin."
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pin generated successfully."
+                    }
+                }
+            }
+        },
+        "/employees/resend_otp": {
+            "post": {
+                "tags": [
+                    "Resend otp"
+                ],
+                "summary": "Resend otp",
+                "parameters": [
+                    {
+                        "name": "mobile number",
+                        "in": "body",
+                        "required": true,
+                        "description": "Resend otp"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resend otp"
+                    }
+                }
+            }
+        },
+        "/employees/forgot_pin": {
+            "post": {
+                "tags": [
+                    "Employee forgot pin request"
+                ],
+                "summary": "Employee forgot pin request",
+                "description": "Employee forgot pin request send to employee registered mobile number.",
+                "parameters": [
+                    {
+                        "name": "mobile_number",
+                        "in": "body",
+                        "required": true,
+                        "description": "Forgot pin request"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OTP sent successfully."
+                    }
+                }
+            }
+        },
+        "/employees/forgot_pin/verify": {
+            "post": {
+                "tags": [
+                    "Forgot pin otp verify"
+                ],
+                "summary": "Forgot pin otp verify",
+                "description": "Forgot pin otp verify",
+                "parameters": [
+                    {
+                        "name": " token ,otp",
+                        "in": "body",
+                        "required": true,
+                        "description": "Otp verify"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Otp verified."
+                    }
+                }
+            }
+        },
+        "/employees/forgot_pin/reset_pin": {
+            "post": {
+                "tags": [
+                    "Reset pin"
+                ],
+                "summary": "Reset pin",
+                "description": "Reset pin",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "body",
+                        "required": true
+                    },
+                    {
+                        "name": "pin",
+                        "in": "body",
+                        "required": true
+                    },
+                    {
+                        "name": "verify_pin",
+                        "in": "body",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pin changed successful"
+                    }
+                }
+            }
+        },
+        "/employees/bankdetails": {
+            "post": {
+                "tags": [
+                    "Employee bank details data"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "summary": " Employee bank details data",
+                "description": " Employee bank details data",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/employees/verifybankdetail": {
+            "post": {
+                "tags": [
+                    "Employee bank details correct or not correct"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "summary": "Employee bank details correct or not correct",
+                "description": "Employee bank details correct or not correct",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "body",
+                        "required": true,
+                        "description": "Employee bank details correct or not correct"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Verify details"
+                    }
+                }
+            }
+        },
+        "/employees/takeselfie": {
+            "post": {
+                "tags": [
+                    "Employee selfie"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "summary": "Employee selfie",
+                "description": "Employee selfie",
+                "parameters": [
+                    {
+                        "name": "selfie",
+                        "in": "form-data",
+                        "required": true,
+                        "description": "Employee selfie"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Selfie uploaded successfully."
+                    }
+                }
+            }
+        },
+        "/employees/employeeprofile": {
+            "get": {
+                "tags": [
+                    "Employees profile"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "summary": "Employees profile",
+                "description": "Employees profile",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/employees/changepin": {
+            "post": {
+                "tags": [
+                    "Pin change"
+                ],
+                "summary": "Pin change",
+                "description": "Pin change",
+                "parameters": [
+                    {
+                        "name": "old_pin",
+                        "in": "body",
+                        "required": true
+                    },
+                    {
+                        "name": "new_pin",
+                        "in": "body",
+                        "required": true
+                    },
+                    {
+                        "name": "verify_pin",
+                        "in": "body",
+                        "required": true
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pin changed successfully."
+                    }
+                }
+            }
+        },
+        "/employees/csvupload": {
+            "post": {
+                "tags": [
+                    "Csv data upload"
+                ],
+                "description": "Csv data upload",
+                "summary": "Csv data upload",
+                "parameters": [
+                    {
+                        "name": "csv_book",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields of employee"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employees data inserted successfully"
+                    }
+                }
+            }
+        },
+        "/employees/workshiftnameupdate": {
+            "post": {
+                "tags": [
+                    "Update Work shift name"
+                ],
+                "description": "Update Work shift name",
+                "summary": "Update Work shift name",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "From body",
+                        "required": true,
+                        "description": "Employer id"
+                    },
+                    {
+                        "name": "shift_name",
+                        "in": "From body",
+                        "required": true,
+                        "description": "Shift name"
+                    },
+                    {
+                        "name": "workshift_id",
+                        "in": "From body",
+                        "required": true,
+                        "description": "Work shift id"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Work shift name updated successfully"
+                    }
+                }
+            }
+        },
+
+
+
+        "/employers/createemployer": {
+            "post": {
+                "tags": [
+                    "Create employers"
+                ],
+                "summary": "Create employers",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Create employers",
+                "parameters": [
+                    {
+                        "name": "first_name ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields employers"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "employers data inserted successfully"
+                    }
+                }
+            }
+        },
+        "/employers/employerslist": {
+            "post": {
+                "tags": [
+                    "Employers list"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "summary": "Get all employers List",
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    },
+                    "parameters": [
+                        {
+                            "name": "page , page_size ",
+                            "in": "body",
+                            "required": true,
+                            "description": "All fields employer"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ]
+                }
+            }
+        },
+        "/employers/getemployer": {
+            "post": {
+                "tags": [
+                    "Find employers"
+                ],
+                "summary": "Find employers",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Find employers",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "body",
+                        "required": true,
+                        "description": "ID of employers that we want to find"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/employers/changestatus": {
+            "post": {
+                "tags": [
+                    "Update change status"
+                ],
+                "description": "Update change status",
+                "summary": "Update change status",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "status, _id ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields employer"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employer change status data successfully"
+                    }
+                }
+            }
+        },
+        "/employers/forgotpasswordrequest": {
+            "get": {
+                "tags": [
+                    "Employers forgot password request"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "summary": "Employers forgotpasswordrequest",
+                "responses": {
+                    "200": {
+                        "description": "Request send successfully"
+                    },
+                    "parameters": [
+                        {
+                            "name": "email",
+                            "in": "body",
+                            "required": true,
+                            "description": "All fields employer"
+                        }
+                    ],
+                    "produces": [
+                        "application/json"
+                    ]
+                }
+            }
+        },
+        "/employers/forgotpassword": {
+            "post": {
+                "tags": [
+                    " Employers forgot password"
+                ],
+                "summary": " Employers forgotpassword",
+                "description": "Change password",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "body",
+                        "required": true,
+                        "description": "ID of forgotpassword that we want to find"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Change password successfully"
+                    }
+                }
+            }
+        },
+        "/employers/creditlimit/request": {
+            "get": {
+                "tags": [
+                    "Update credit limit request"
+                ],
+                "description": "Update credit limit request",
+                "summary": "Update credit limit request",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "rupyo_credit_limit ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Update credit limit request  successfully"
+                    }
+                }
+            }
+        },
+        "/employers/changecreditlimit": {
+            "put": {
+                "tags": [
+                    "Update credit limit"
+                ],
+                "description": "Update credit limit",
+                "summary": "Update credit limit",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "company_id, rupyo_credit_limit ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields employee"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Update credit limit data successfully"
+                    }
+                }
+            }
+        },
+        "/employers/companyname": {
+            "get": {
+                "tags": [
+                    "Get company name"
+                ],
+                "description": "Get company name",
+                "summary": "Get company name",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/employers/dashboard": {
+            "post": {
+                "tags": [
+                    "Employer dashboard"
+                ],
+                "description": "Employer dashboard",
+                "summary": "Employer dashboard",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/employers/profile": {
+            "post": {
+                "tags": [
+                    "Employers profile"
+                ],
+                "description": "Employers profile",
+                "summary": "Employers profile",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "company_id",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/employers/csvupload": {
+            "post": {
+                "tags": [
+                    "Employer csv data upload"
+                ],
+                "description": "Csv data upload",
+                "summary": "Csv data upload",
+                "parameters": [
+                    {
+                        "name": "csv_book",
+                        "in": "From body",
+                        "required": true,
+                        "description": "All fields of employers"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employers data inserted successfully"
+                    }
+                }
+            }
+        },
+
+
+
+        "/enquiries/save": {
+            "post": {
+                "tags": [
+                    "Save enquiries"
+                ],
+                "summary": "Save enquiries",
+                "description": "Save enquiries",
+                "parameters": [
+                    {
+                        "name": "email ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields enquiries"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Enquiries data inserted successfully"
+                    }
+                }
+            }
+        },
+        "/enquiries/list": {
+            "post": {
+                "tags": [
+                    "Enquiries list"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "summary": "Get all Enquiries List",
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    },
+                    "components": {
+                        "securitySchemes": {
+                            "bearerAuth": {
+                                "type": "http",
+                                "scheme": "bearer",
+                                "bearerFormat": "JWT"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/enquiries/updatestatus": {
+            "post": {
+                "tags": [
+                    "Enquiries status update"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "summary": "Enquiries status update",
+                "description": "Enquiries status update",
+                "parameters": [
+                    {
+                        "name": "status ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields enquiries"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Enquiries status update"
+                    }
+                }
+            }
+        },
+
+
+
+
+        "/holiday/add_holiday": {
+            "post": {
+                "tags": [
+                    "Add Holiday"
+                ],
+                "summary": "Add Hoilday",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Add Hoilday",
+                "parameters": [
+                    {
+                        "name": " company Id, Year, Date, Details, Ispaid ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/holiday/list": {
+            "post": {
+                "tags": [
+                    "Holiday List"
+                ],
+                "summary": "Holiday List",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Holiday List",
+                "parameters": [
+                    {
+                        "name": " ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/holiday/delete": {
+            "post": {
+                "tags": [
+                    "Delete Holiday"
+                ],
+                "summary": "Delete Holiday",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Delete Holiday",
+                "parameters": [
+                    {
+                        "name": " company Id, Year, Date, Ispaid ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+
+
+
+        "/ledger/payout": {
+            "post": {
+                "tags": [
+                    "Ledger payout"
+                ],
+                "summary": "Ledger payout",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Ledger payout",
+                "parameters": [
+                    {
+                        "name": "status, company_id, user_id ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/ledger/settlement": {
+            "post": {
+                "tags": [
+                    "Ledger Settlement"
+                ],
+                "summary": "Ledger Settlement",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Ledger Settlement",
+                "parameters": [
+                    {
+                        "name": "company_id",
+                        "in": "body",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "name": "year",
+                        "in": "body",
+                        "required": false,
+                        "description": ""
+                    },
+                    {
+                        "name": "month",
+                        "in": "body",
+                        "required": false,
+                        "description": ""
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/ledger/employee_payout": {
+            "post": {
+                "tags": [
+                    "Employee ledger payout"
+                ],
+                "summary": "Ledger payout",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Ledger payout",
+                "parameters": [
+                    {
+                        "name": " company_id, user_id, time_filter, status, search_name ",
+                        "in": "body",
+                        "required": false,
+                        "description": "All fields"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/ledger/employer_payout": {
+            "post": {
+                "tags": [
+                    "Employer ledger payout"
+                ],
+                "summary": "Ledger payout",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Ledger payout",
+                "parameters": [
+                    {
+                        "name": "status, company_id, user_id ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+
+
+
+        "/monthlyattendance/list": {
+            "post": {
+                "tags": [
+                    "Show monthly attendance"
+                ],
+                "summary": "Show monthly attendance",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Show monthly attendance",
+                "parameters": [
+                    {
+                        "name": "year, month",
+                        "in": "query",
+                        "required": true,
+                        "description": "Monthly attendance"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+
+
+
+        "/notifications/createnotification": {
+            "post": {
+                "tags": [
+                    "Create notifications"
+                ],
+                "summary": "Create notifications",
+                "description": "Create notifications",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields notifications"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Notifications data inserted successfully"
+                    }
+                }
+            }
+        },
+        "/notifications/upadtenotification": {
+            "put": {
+                "tags": [
+                    "Update notification"
+                ],
+                "description": "Update notification",
+                "summary": "Update notification",
+                "parameters": [
+                    {
+                        "name": "user_id ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields employee"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Update notification data successfully"
+                    }
+                }
+            }
+        },
+        "/notifications/updatestatus": {
+            "post": {
+                "tags": [
+                    "Delete notification"
+                ],
+                "summary": "Delete notification",
+                "description": "Delete notification",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "notifications_id ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields notification"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delete notification data successfully"
+                    }
+                }
+            }
+        },
+        "/notifications/notifications_count": {
+            "post": {
+                "tags": [
+                    "Notification count"
+                ],
+                "summary": "Unread notification count",
+                "description": "Show the count of unread notifications",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "company_id ",
+                        "in": "Token",
+                        "required": true,
+                        "description": ""
+                    },
+                    {
+                        "name": "role_id ",
+                        "in": "Token",
+                        "required": true,
+                        "description": ""
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description":"Count of unread notifications"
+                    }
+                }
+            }
+        },
+        "/notifications/employeefilternotification": {
+            "get": {
+                "tags": [
+                    "Filter notification employee"
+                ],
+                "summary": "Filter notification",
+                "description": "Filter notification",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "year, notification_type, current_page ",
+                        "in": "query",
+                        "required": true,
+                        "description": "Filter notification date and type of"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/notifications/filternotification": {
+            "post": {
+                "tags": [
+                    "Filter notification employer and rupyo admin"
+                ],
+                "summary": "Filter notification",
+                "description": "Filter notification",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "page, page_size, user_id, company_id ",
+                        "in": "body",
+                        "required": true,
+                        "description": "Filter notification date and type of"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/notifications/employees/mark_read": {
+            "post": {
+                "tags": [
+                    "Read notifications"
+                ],
+                "summary": "Read notifications",
+                "description": "Read notifications",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "body",
+                        "required": true,
+                        "description": "Read notifications"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Read notifications"
+                    }
+                }
+            }
+        },
+
+
+
+        "/payrolls/show": {
+            "post": {
+                "tags": [
+                    " Payroll show"
+                ],
+                "summary": " Payroll show",
+                "description": " Payroll show",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "body",
+                        "required": true,
+                        "description": " Payroll show"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+
+
+
+        "/reports/status_report": {
+            "post": {
+                "tags": [
+                    "Employee status report"
+                ],
+                "summary": "Employee status report",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Employee status report",
+                "parameters": [
+                    {
+                        "name": "search_name, status_filter, company_id ",
+                        "in": "body",
+                        "required": true,
+                        "description": "Employee status report"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/reports/employer_settlement": {
+            "post": {
+                "tags": [
+                    "Employer settlement"
+                ],
+                "summary": "Employer settlement",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Employer settlement",
+                "parameters": [
+                    {
+                        "name": "company_id, status, year, month ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields "
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/reports/employee_payout_report": {
+            "post": {
+                "tags": [
+                    "Employee payout report"
+                ],
+                "summary": "Employee payout report",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Employee payout report",
+                "parameters": [
+                    {
+                        "name": "company_id, search_name, status_filter ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields attendance"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/reports/company_wise_payout_report": {
+            "post": {
+                "tags": [
+                    "Company wise employee payout report"
+                ],
+                "summary": "Employee payout report",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Employee payout report",
+                "parameters": [
+                    {
+                        "name": "search_name, user_id, status_filter ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/reports/company_wise_employee_report": {
+            "post": {
+                "tags": [
+                    "Employee report"
+                ],
+                "summary": "Employee report",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Employee report",
+                "parameters": [
+                    {
+                        "name": "search_name, user_id, status_filter",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+
+
+
+        "/requests/save": {
+            "post": {
+                "tags": [
+                    "Request save"
+                ],
+                "summary": "Request save",
+                "description": "Request save",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "request_type , details ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Request created successful"
+                    }
+                }
+            }
+        },
+        "/requests/list": {
+            "post": {
+                "tags": [
+                    "Request list"
+                ],
+                "summary": "Request list data found",
+                "description": "Request list data found",
+                "parameters": [
+                    {
+                        "name": "page , page_size ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/requests/find": {
+            "post": {
+                "tags": [
+                    "Request find"
+                ],
+                "summary": "Request find ",
+                "description": "Request find ",
+                "parameters": [
+                    {
+                        "name": "request_id",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/requests/updatestatus": {
+            "post": {
+                "tags": [
+                    "Request status"
+                ],
+                "summary": "Request status change",
+                "description": "Request status change",
+                "parameters": [
+                    {
+                        "name": "status, request_id",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Request status change"
+                    }
+                }
+            }
+        },
+        "/requests/requestupdate": {
+            "put": {
+                "tags": [
+                    "Request update"
+                ],
+                "summary": "Request update ",
+                "description": "Request update ",
+                "parameters": [
+                    {
+                        "name": "page , page_size ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Request update successful "
+                    }
+                }
+            }
+        },
+
+
+
+        "/scheduler/missed_punchin_reminder": {
+            "post": {
+                "tags": [
+                    " Missed punchin reminder"
+                ],
+                "summary": " Missed punchin reminder",
+                "description": " Missed punchin reminder",
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/scheduler/missed_punchout_reminder": {
+            "post": {
+                "tags": [
+                    " Employee missed punchout reminder"
+                ],
+                "summary": " Employee missed punchout reminder",
+                "description": " Employee missed punchout reminder",
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/scheduler/pause_employee_activation": {
+            "post": {
+                "tags": [
+                    " Pause employee activaation"
+                ],
+                "summary": " Pause employee activaation",
+                "description": " Pause employee activaation",
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/scheduler/consumed_credit_limit_notification": {
+            "post": {
+                "tags": [
+                    " Total consume credit limit employee"
+                ],
+                "summary": " Total consume credit limit employee",
+                "description": " Total consume credit limit employee",
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/scheduler/attendance_mark_absents": {
+            "post": {
+                "tags": [
+                    " Not mark today attendance"
+                ],
+                "summary": " Not mark today attendance",
+                "description": " Not mark today attendance",
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/scheduler/punchin_but_not_punchout_mark_absent'": {
+            "post": {
+                "tags": [
+                    " Not punchout mark today attendance"
+                ],
+                "summary": " Not punchout mark today attendance",
+                "description": " Not punchout mark today attendance",
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/scheduler/reset_employee_monthly_data'": {
+            "post": {
+                "tags": [
+                    "Reset employees monthly data"
+                ],
+                "summary": "Reset employee monthly data",
+                "description": "Reset employees monthly data like attendances, monthly earned amount, monthly rupyo payout",
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/scheduler/reset_employer_monthly_data'": {
+            "post": {
+                "tags": [
+                    "Reset employers monthly data"
+                ],
+                "summary": "Reset employers monthly data",
+                "description": "Reset employees monthly data like total payout, how many employees took payout",
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+
+
+
+        "/service/send_SMS": {
+            "post": {
+                "tags": [
+                    "Send SMS"
+                ],
+                "summary": " Send SMS ",
+                "description": " Send SMS ",
+                "parameters": [
+                    {
+                        "key": "key",
+                        "in": "query",
+                        "required": true,
+                        "description": ""
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "SMS Send Sucessfully"
+                    }
+                }
+            }
+        },
+        "/service/get_file_token": {
+            "get": {
+                "tags": [
+                    "AWS file token"
+                ],
+                "summary": "AWS file token",
+                "description": "AWS file token",
+                "parameters": [
+                    {
+                        "key": "key",
+                        "in": "query",
+                        "required": true,
+                        "description": ""
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": " "
+                    }
+                }
+            }
+        },
+        "/service/cloudfront_url": {
+            "get": {
+                "tags": [
+                    "Cloud front service"
+                ],
+                "summary": "Cloudfront service file url",
+                "description": "Cloudfront service file url",
+                "parameters": [
+                    {
+                        "key": "key",
+                        "in": "query",
+                        "required": true,
+                        "description": ""
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "data found"
+                    }
+                }
+            }
+        },
+        "/service/sendemail": {
+            "post": {
+                "tags": [
+                    "Send email"
+                ],
+                "summary": "Send email",
+                "description": "Send email",
+                "parameters": [
+                    {
+                        "key": "key",
+                        "in": "query",
+                        "required": true,
+                        "description": ""
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Email sent Sucessfully"
+                    }
+                }
+            }
+        },
+
+
+
+        "/settlements/generate": {
+            "post": {
+                "tags": [
+                    "Settlement generate"
+                ],
+                "summary": "Settlement generate",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Settlement generate",
+                "parameters": [
+                    {
+                        "name": "year, company_id, month ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Settlement generate"
+                    }
+                }
+            }
+        },
+        "/settlements/list": {
+            "post": {
+                "tags": [
+                    "Settlement list"
+                ],
+                "summary": "Settlement list",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Settlement list",
+                "parameters": [
+                    {
+                        "name": "page_size, page, search_name ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/settlements/update": {
+            "post": {
+                "tags": [
+                    "Settlement update"
+                ],
+                "summary": "Settlement update",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Settlement update",
+                "parameters": [
+                    {
+                        "name": "settlement_id, paid_amount ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/settlements/settlement_details": {
+            "post": {
+                "tags": [
+                    "Settlement payment details"
+                ],
+                "summary": "Settlement payment details",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Settlement payment details",
+                "parameters": [
+                    {
+                        "name": "settlement_id",
+                        "in": "body",
+                        "required": true,
+                        "description": "settlement_id"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+
+
+
+        "/transactions/payoutrequest": {
+            "post": {
+                "tags": [
+                    " Transactions payout request"
+                ],
+                "summary": " Transactions payout request",
+                "description": " Transactions payout request",
+                "parameters": [
+                    {
+                        "name": "amount",
+                        "in": "body",
+                        "required": true,
+                        "description": " Transactions payout request"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Transactions payout request successfull"
+                    }
+                }
+            }
+        },
+        "/transactions/list": {
+            "post": {
+                "tags": [
+                    " Transactions list"
+                ],
+                "summary": " Transactions list",
+                "description": " Transactions list",
+                "parameters": [
+                    {
+                        "name": "page, page size",
+                        "in": "body",
+                        "required": true,
+                        "description": " Transactions list"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/transactions/transaction_details": {
+            "post": {
+                "tags": [
+                    "Transaction details"
+                ],
+                "summary": " Transaction details",
+                "description": "Transaction details status tracker",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "request_id",
+                        "in": "body",
+                        "required": true,
+                        "description": "Transaction details status tracker"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/transactions/employeetransactions": {
+            "post": {
+                "tags": [
+                    " Employee Transactions list"
+                ],
+                "summary": " Employee Transactions list",
+                "description": " Employee Transactions list",
+                "parameters": [
+                    {
+                        "name": "type, year, page, search_name",
+                        "in": "query",
+                        "required": true,
+                        "description": " Employee Transactions list"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/transactions/updatetransaction": {
+            "post": {
+                "tags": [
+                    " Transactions update"
+                ],
+                "summary": " Transactions update",
+                "description": " Transactions update",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "status, _id",
+                        "in": "body",
+                        "required": true,
+                        "description": " Transactions update"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Transactions update successfully"
+                    }
+                }
+            }
+        },
+
+
+
+        "/users/login": {
+            "post": {
+                "tags": [
+                    "User login"
+                ],
+                "description": "User login",
+                "summary": "User login",
+                "parameters": [
+                    {
+                        "name": "email, password ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields employee"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Users login successful"
+                    }
+                }
+            }
+        },
+        "/users/createrupyoadmin": {
+            "post": {
+                "tags": [
+                    "Create rupyoadmin"
+                ],
+                "summary": "Create rupyoadmin",
+                "description": "Create rupyoadmin",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields rupyoadmin"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "rupyoadmin data inserted successfully"
+                    }
+                }
+            }
+        },
+        "/users/rupyoadminlist": {
+            "post": {
+                "tags": [
+                    "Rupyoadmin list"
+                ],
+                "summary": "Get all Rupyoadmin List",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    },
+                    "components": {
+                        "securitySchemes": {
+                            "bearerAuth": {
+                                "type": "http",
+                                "scheme": "bearer",
+                                "bearerFormat": "JWT"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/findrupyoadmin": {
+            "post": {
+                "tags": [
+                    "Find rupyoadmin"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "summary": "Find rupyoadmin",
+                "description": "Find rupyoadmin",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "body",
+                        "required": true,
+                        "description": "ID of rupyoadmin that we want to find"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/users/updaterupyoadmin": {
+            "put": {
+                "tags": [
+                    "Update rupyoadmin"
+                ],
+                "description": "Update rupyoadmin",
+                "summary": "Update rupyoadmin",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields employee"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Update rupyoadmin data successfully"
+                    }
+                }
+            }
+        },
+        "/users/updatestatus": {
+            "post": {
+                "tags": [
+                    "Status update rupyoadmin"
+                ],
+                "summary": "Status update rupyoadmin",
+                "description": "Status update rupyoadmin",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields rupyoadmin"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Status update rupyoadmin successfully"
+                    }
+                }
+            }
+        },
+        "/users/changepassword": {
+            "post": {
+                "tags": [
+                    "Update rupyoadmin password"
+                ],
+                "description": "Update rupyoadmin password",
+                "summary": "Update rupyoadmin password",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "new_password, confirm_password ",
+                        "in": "query, body",
+                        "required": true,
+                        "description": "All fields rupyo admin"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Update rupyoadmin password successfully"
+                    }
+                }
+            }
+        },
+        "/users/change_password_request": {
+            "post": {
+                "tags": [
+                    "Rupyo admin and employer change password request"
+                ],
+                "description": "Rupyo admin and employer change password request",
+                "summary": "Rupyo admin change password OTP send to Super admin and employer change password OTP send to own number.",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "",
+                        "required": false,
+                        "description": "Only token required"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Otp sent successfully."
+                    }
+                }
+            }
+        },
+        "/users/rupyo_admin_change_password": {
+            "post": {
+                "tags": [
+                    "Rupyo admin and employer change password"
+                ],
+                "description": "Rupyo admin and employer change password",
+                "summary": "Rupyo admin change and employer change password with OTP, old password and new password.",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "OTP",
+                        "in": "body",
+                        "required": true,
+                        "description": "OTP"
+                    },
+                    {
+                        "name": "Old password",
+                        "in": "body",
+                        "required": true,
+                        "description": "Old password"
+                    },
+                    {
+                        "name": "New password",
+                        "in": "body",
+                        "required": true,
+                        "description": "New password"
+                    },
+                    {
+                        "name": "Confirm password",
+                        "in": "body",
+                        "required": true,
+                        "description": "Confirm password"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Password changed successfully."
+                    }
+                }
+            }
+        },
+        "/users/generate_password": {
+            "post": {
+                "tags": [
+                    "Rupyo admin generate password for employer."
+                ],
+                "description": "Rupyo admin generate password for employer if he click on forgot password and password send to employer mail id.",
+                "summary": "Rupyo admin generate password for employer if he click on forgot password.",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Change password email sent successfully."
+                    }
+                }
+            }
+        },
+        "/users/dashboard": {
+            "post": {
+                "tags": [
+                    "Rupyo admin dashboard"
+                ],
+                "description": "Rupyo admin dashboard",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "summary": "Rupyo admin dashboard",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/users/s3_key": {
+            "post": {
+                "tags": [
+                    "S3 key inserted "
+                ],
+                "summary": "S3 key ",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "S3 key ",
+                "parameters": [
+                    {
+                        "name": "s3_key ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Users s3 key inserted successfully"
+                    }
+                }
+            }
+        },
+        "/users/payout_approve_credit_access": {
+            "post": {
+                "tags": [
+                    "Super admin set payout approve, credit access"
+                ],
+                "summary": "Super admin set payout approve, credit access.",
+                "description": "Super admin set payout approve, and payout credit access for rupyo admin",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "rupyo admin object id",
+                        "in": "body",
+                        "required": true,
+                        "description": ""
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Payout access updated successfully."
+                    }
+                }
+            }
+        },
+
+
+        
+        "/workshifts/createworkshift": {
+            "post": {
+                "tags": [
+                    "Create workshift"
+                ],
+                "summary": "Create workshift",
+                "description": "Create workshift",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "company_id ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields workshift"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Work shift data inserted successfully"
+                    }
+                }
+            }
+        },
+        "/workshifts/workshiftlist": {
+            "post": {
+                "tags": [
+                    "Workshift list"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "page, page_size ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields work shift"
+                    }
+                ],
+                "summary": "Get all workshift List",
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/workshifts/find": {
+            "post": {
+                "tags": [
+                    "Find workshift"
+                ],
+                "summary": "Find workshift",
+                "description": "Find workshift",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "workshift_id ",
+                        "in": "body",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        },
+        "/workshifts/updatestatus": {
+            "post": {
+                "tags": [
+                    "Delete work shift"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Delete work shift",
+                "summary": "Delete work shift",
+                "parameters": [
+                    {
+                        "name": "workshift_id ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields work shift"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delete work shift data successfully"
+                    }
+                }
+            }
+        },
+        "/workshifts/workshiftupdate": {
+            "post": {
+                "tags": [
+                    "Update work shift"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "description": "Update work shift",
+                "summary": "Update work shift",
+                "parameters": [
+                    {
+                        "name": "workshift_id ",
+                        "in": "body",
+                        "required": true,
+                        "description": "All fields employee"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Update work shift data successfully"
+                    }
+                }
+            }
+        },
+        "/workshifts/findworkshiftbycompanyid": {
+            "post": {
+                "tags": [
+                    "Find workshift by company id"
+                ],
+                "summary": "Find workshift",
+                "description": "Find workshift by company id",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "company_id ",
+                        "in": "body",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Employee (for List)": {
+            "properties": {
+                "page": {
+                    "type": "Number",
+                    "description": "Pagination page number (by default 1)"
+                },
+                "page_size": {
+                    "type": "Number",
+                    "description": "Page size particular show one page (by default 10)"
+                },
+                "sort_by": {
+                    "type": "String",
+                    "description": "ascending and dascending (by default dascending)"
+                },
+                "search_name": {
+                    "type": "String",
+                    "description": "any charcter (only first name)"
+                },
+                "sort_by_column": {
+                    "type": "Column name same",
+                    "description": "Column name  (by default created_at)"
+                },
+                "status_filter": {
+                    "description": "Use this enum value for like (Active: 1, deactive: 2, pause: 3)"
+                },
+                "employee_type": {
+                    "description": "Use this enum value for like (Part time: 2 full time: 1, weekly: 4, daily: 3)"
+                },
+                "company_id": {
+                    "description": "Any company wise filter"
+                }
+            }
+        },
+        "Employee (for credit limit bulk update )": {
+            "properties": {
+                "employee_id": {
+                    "type": "Array",
+                    "description": "Update the multiple credit limit "
+                },
+                "rupyo_credit_limit": {
+                    "type": "String",
+                    "description": "Update the multiple credit limit "
+                },
+                "type": {
+                    "type": "String",
+                    "description": "Use enum value for like (fix_amount: 1, percent_base: 2)"
+                },
+                "percent": {
+                    "type": "Number",
+                    "description": "Net salary persent of Credit limit "
+                }
+            }
+        },
+        "Employee (for status bulk update and delete)": {
+            "properties": {
+                "employee_id": {
+                    "type": "String",
+                    "description": "Update the multiple status "
+                },
+                "status": {
+                    "type": "Number",
+                    "description": "Update the multiple status "
+                }
+            }
+        },
+        "Employee (for find)": {
+            "properties": {
+                "employee_id": {
+                    "type": "String"
+                }
+            }
+        },
+        "Employee (for csv data)": {
+            "properties": {
+                "csv_book": {
+                    "type": "Files"
+                },
+                "company_id": {
+                    "type": "String"
+                },
+                "work_shift_id": {
+                    "type": "String"
+                }
+            }
+        },
+        "Employee (for update)": {
+            "required": [
+                "first_name",
+                "last_name",
+                "mobile_number",
+                "employee_object_id"
+            ],
+            "properties": {
+                "employee_object_id": {
+                    "type": "String",
+                    "description": "employee_object_id compulsory "
+                },
+                "first_name": {
+                    "type": "String"
+                },
+                "last_name": {
+                    "type": "String"
+                },
+                "mobile_number": {
+                    "type": "String"
+                },
+                "middle_name": {
+                    "type": "String"
+                },
+                "workshift_id": {
+                    "type": "String",
+                    "description": "Not update"
+                },
+                "employee_type": {
+                    "type": "Number",
+                    "description": "full_time 1 part_time 2 daily 3 weekly 4 (only value)"
+                },
+                "rupyo_credit_limit": {
+                    "type": "Number",
+                    "description": "Optional"
+                },
+                "credit_limit_type": {
+                    "type": "Number",
+                    "description": "rupyo_credit_limit optional time use"
+                },
+                "basic_pay": {
+                    "type": "Number"
+                },
+                "additions": {
+                    "type": "Number"
+                },
+                "credit_limit_percent": {
+                    "type": "Number",
+                    "description": "rupyo_credit_limit optional time use"
+                },
+                "salary_cycle": {
+                    "type": "String"
+                },
+                "net_salary": {
+                    "type": "Number"
+                },
+                "net_deductions": {
+                    "type": "Number"
+                },
+                "pan_card": {
+                    "type": "string",
+                    "description": "Encryption pan_card"
+                },
+                "bank_detsils": {
+                    "type": "object",
+                    "properties": {
+                        "bank_name": {
+                            "type": "string",
+                            "description": " Encryption bank name"
+                        },
+                        "account_number": {
+                            "type": "String",
+                            "description": "Encryption account number"
+                        },
+                        "ifsc_type": {
+                            "type": "String",
+                            "description": "Encryption ifsc code"
+                        }
+                    }
+                },
+                "address": {
+                    "type": "object",
+                    "properties": {
+                        "address_1": {
+                            "type": "string"
+                        },
+                        "address_2": {
+                            "type": "String"
+                        },
+                        "city": {
+                            "type": "String"
+                        },
+                        "state": {
+                            "type": "string"
+                        },
+                        "country": {
+                            "type": "String"
+                        },
+                        "pincode": {
+                            "type": "Number"
+                        }
+                    }
+                }
+            }
+        },
+        "Employee (for Create)": {
+            "required": [
+                "first_name",
+                "last_name",
+                "email",
+                "mobile_number",
+                "employee_object_id"
+            ],
+            "properties": {
+                "employee_object_id": {
+                    "type": "String",
+                    "description": "employee_object_id compulsory zero value"
+                },
+                "first_name": {
+                    "type": "String"
+                },
+                "last_name": {
+                    "type": "String"
+                },
+                "email": {
+                    "type": "String",
+                    "unique": true
+                },
+                "mobile_number": {
+                    "type": "String",
+                    "unique": true
+                },
+                "basic_pay": {
+                    "type": "Number"
+                },
+                "additions": {
+                    "type": "Number"
+                },
+                "employee_id_generation_method": {
+                    "type": "Number",
+                    "description": "employee_id_generation_method = 1 ( Auto generate 14 digit) and 2 (employee manual create)"
+                },
+                "employee_id": {
+                    "type": "Number",
+                    "unique": true,
+                    "description": "Employee id generation method 2 this time capulsary Employee id 14 alphaNumeric and unqiue this comany "
+                },
+                "employee_sys_id": {
+                    "type": "String",
+                    "unique": true,
+                    "description": "( Auto generate 16 digit )"
+                },
+                "middle_name": {
+                    "type": "String",
+                    "description": " (optional)"
+                },
+                "company_id": {
+                    "type": "String"
+                },
+                "work_shift_id": {
+                    "type": "String"
+                },
+                "employee_type": {
+                    "type": "Number",
+                    "description": "full_time 1 part_time 2 daily 3 weekly 4 (only value)"
+                },
+                "rupyo_credit_limit": {
+                    "type": "Number",
+                    "description": "Optional"
+                },
+                "credit_limit_type": {
+                    "type": "Number",
+                    "description": "rupyo_credit_limit optional time use"
+                },
+                "credit_limit_percent": {
+                    "type": "Number",
+                    "description": "rupyo_credit_limit optional time use"
+                },
+                "verification_status": {
+                    "type": "Number"
+                },
+                "salary_cycle": {
+                    "type": "Number"
+                },
+                "net_salary": {
+                    "type": "Number"
+                },
+                "net_deductions": {
+                    "type": "Number"
+                },
+                "opening_balance": {
+                    "type": "Number"
+                },
+                "pan_card": {
+                    "type": "string",
+                    "description": "Encryption pan_card"
+                },
+                "bank_detsils": {
+                    "type": "object",
+                    "properties": {
+                        "bank_name": {
+                            "type": "string",
+                            "description": " Encryption bank name"
+                        },
+                        "account_number": {
+                            "type": "String",
+                            "description": "Encryption account number"
+                        },
+                        "ifsc_type": {
+                            "type": "String",
+                            "description": "Encryption ifsc code"
+                        }
+                    }
+                },
+                "address": {
+                    "type": "object",
+                    "properties": {
+                        "address_1": {
+                            "type": "string"
+                        },
+                        "address_2": {
+                            "type": "String"
+                        },
+                        "city": {
+                            "type": "String"
+                        },
+                        "state": {
+                            "type": "string"
+                        },
+                        "country": {
+                            "type": "String"
+                        },
+                        "pincode": {
+                            "type": "Number"
+                        }
+                    }
+                }
+            }
+        },
+        "Notification (for create)": {
+            "required": [
+                "user_id"
+            ],
+            "properties": {
+                "user_id": {
+                    "type": "String"
+                },
+                "company_id": {
+                    "type": "Number"
+                },
+                "message": {
+                    "type": "String",
+                    "description": "Message size maximum 1000 charcter"
+                },
+                "resource_type": {
+                    "type": "Number"
+                },
+                "status": {
+                    "type": "Number"
+                },
+                "request_id": {
+                    "type": "String"
+                },
+                "time": {
+                    "type": "Number"
+                },
+                "is_read": {
+                    "default": "false",
+                    "type": "Boolean"
+                },
+                "for_notifications": {
+                    "type": "Number"
+                }
+            }
+        },
+        "Notification (for List)": {
+            "properties": {
+                "page": {
+                    "type": "Number",
+                    "description": "Pagination page number (by default 1)"
+                },
+                "page_size": {
+                    "type": "Number",
+                    "description": "Page size particular show one page (by default 10)"
+                },
+                "sort_by": {
+                    "type": "String",
+                    "description": "ascending and dascending (by default dascending)"
+                },
+                "search_name": {
+                    "type": "String",
+                    "description": "any charcter (only first name)"
+                },
+                "sort_by_column": {
+                    "type": "Column name same",
+                    "description": "Column name  (by default created_at)"
+                }
+            }
+        },
+        "Notification (for find)": {
+            "required": [
+                "user_id"
+            ],
+            "properties": {
+                "user_id": {
+                    "type": "String"
+                }
+            }
+        },
+        "Notification (for update)": {
+            "required": [
+                "user_id"
+            ],
+            "properties": {
+                "user_id": {
+                    "type": "String"
+                },
+                "company_id": {
+                    "type": "Number"
+                },
+                "message": {
+                    "type": "String",
+                    "description": "Message size maximum 1000 charcter"
+                },
+                "resource_type": {
+                    "type": "Number"
+                },
+                "status": {
+                    "type": "Number"
+                },
+                "request_id": {
+                    "type": "String"
+                },
+                "time": {
+                    "type": "Number"
+                },
+                "is_read": {
+                    "default": "false",
+                    "type": "Boolean"
+                },
+                "for_notifications": {
+                    "type": "Number"
+                }
+            }
+        },
+        "Notification (for delete)": {
+            "required": [
+                "user_id"
+            ],
+            "properties": {
+                "user_id": {
+                    "type": "array"
+                }
+            }
+        },
+        "Notification (for mark read)": {
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "String"
+                }
+            }
+        },
+        "Notification (for filter employee)": {
+            "properties": {
+                "year": {
+                    "type": "Number",
+                    "description": "this_month = 0, last_month = 1,  last_year = 2, last_three_months = 3 (only send value) "
+                },
+                "notification_type": {
+                    "type": "Number",
+                    "description": "payout = 4, attendance = 5, accunt = 15(only value)"
+                },
+                "current_page": {
+                    "type": "Number",
+                    "description": "How to show this page data"
+                }
+            }
+        },
+        "Notification (for employer )": {
+            "properties": {
+                "user_id": {
+                    "type": "String",
+                    "description": "This company register employee by filter"
+                },
+                "filter_by_status": {
+                    "type": "Number",
+                    "description": " (only send enum value ) active, deactive"
+                },
+                "type_of_filter": {
+                    "type": "Number",
+                    "description": " payout = 4, attendance = 5, administration = 10 (only value)"
+                },
+                "page": {
+                    "type": "Number",
+                    "description": "Pagination page number (by default 1)"
+                },
+                "page_size": {
+                    "type": "Number",
+                    "description": "Page size particular show one page (by default 10)"
+                },
+                "sort_by": {
+                    "type": "String",
+                    "description": "ascending and dascending (by default dascending)"
+                },
+                "sort_by_column": {
+                    "type": "Column name same",
+                    "description": "Column name  (by default created_at)"
+                }
+            }
+        },
+        "Notification (for rupyo admin)": {
+            "properties": {
+                "company_id": {
+                    "type": "String",
+                    "description": "Employer by filter"
+                },
+                "filter_by_status": {
+                    "type": "Number",
+                    "description": "employer = 2, company_id =15, company_name = 16 (only send value ) (only rupto admin filter time field use only)"
+                },
+                "type_of_filter": {
+                    "type": "Number",
+                    "description": " payout = 4, attendance = 5, administration = 10 (only value)"
+                },
+                "page": {
+                    "type": "Number",
+                    "description": "Pagination page number (by default 1)"
+                },
+                "page_size": {
+                    "type": "Number",
+                    "description": "Page size particular show one page (by default 10)"
+                },
+                "sort_by": {
+                    "type": "String",
+                    "description": "ascending and dascending (by default dascending)"
+                },
+                "sort_by_column": {
+                    "type": "Column name same",
+                    "description": "Column name  (by default created_at)"
+                }
+            }
+        },
+        "workshift (for create)": {
+            "required": [
+                "workshift_id"
+            ],
+            "properties": {
+                "workshift_id": {
+                    "type": "String"
+                },
+                "shift_name": {
+                    "type": "String"
+                },
+                "shift_start_time": {
+                    "type": "Date"
+                },
+                "shift_end_time": {
+                    "type": "Date"
+                }
+            }
+        },
+        "workshift (for update)": {
+            "required": [
+                "workshift_id"
+            ],
+            "properties": {
+                "workshift_id": {
+                    "type": "String"
+                },
+                "shift_name": {
+                    "type": "String"
+                },
+                "shift_start_time": {
+                    "type": "Date"
+                },
+                "shift_end_time": {
+                    "type": "Date"
+                }
+            }
+        },
+        "workshift (for delete)": {
+            "required": [
+                "workshift_id"
+            ],
+            "properties": {
+                "workshift_id": {
+                    "type": "String"
+                }
+            }
+        },
+        "workshift (for find particular)": {
+            "required": [
+                "workshift_id"
+            ],
+            "properties": {
+                "workshift_id": {
+                    "type": "String"
+                }
+            }
+        },
+        "workshift (for find by company id)": {
+            "required": [
+                "company_id"
+            ],
+            "properties": {
+                "company_id": {
+                    "type": "String"
+                }
+            }
+        },
+        "Users (for login)": {
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "type": "String",
+                    "description": "Valid email "
+                },
+                "password": {
+                    "type": "String",
+                    "description": "Minimum 8 digit"
+                }
+            }
+        },
+        "Rupyo admin (for create)": {
+            "required": [
+                "user_id",
+                "first_name",
+                "last_name",
+                "email",
+                "mobile_number",
+                "password"
+            ],
+            "properties": {
+                "first_name": {
+                    "type": "String"
+                },
+                "last_name": {
+                    "type": "String"
+                },
+                "email": {
+                    "type": "String"
+                },
+                "mobile_number": {
+                    "type": "Number"
+                },
+                "password": {
+                    "type": "String"
+                }
+            }
+        },
+        "Rupyo admin  (for List)": {
+            "properties": {
+                "page": {
+                    "type": "Number",
+                    "description": "Pagination page number (by default 1)"
+                },
+                "page_size": {
+                    "type": "Number",
+                    "description": "Page size particular show one page (by default 10)"
+                },
+                "sort_by": {
+                    "type": "String",
+                    "description": "ascending and dascending (by default dascending)"
+                },
+                "search_name": {
+                    "type": "String",
+                    "description": "any charcter (only first name)"
+                },
+                "sort_by_column": {
+                    "type": "Column name same",
+                    "description": "Column name  (by default created_at)"
+                }
+            }
+        },
+        "Rupyo admin (for find)": {
+            "required": [
+                "user_id"
+            ],
+            "properties": {
+                "user_id": {
+                    "type": "String"
+                }
+            }
+        },
+        "Rupyo admin (for update)": {
+            "required": [
+                "user_id"
+            ],
+            "properties": {
+                "user_id": {
+                    "type": "String"
+                },
+                "first_name": {
+                    "type": "String"
+                },
+                "last_name": {
+                    "type": "String"
+                },
+                "mobile_number": {
+                    "type": "String"
+                }
+            }
+        },
+        "Rupyo admin (for status update)": {
+            "required": [
+                "user_id"
+            ],
+            "properties": {
+                "user_id": {
+                    "type": "array"
+                },
+                "status": {
+                    "type": "Number"
+                }
+            }
+        },
+        "Rupyo admin (for change password)": {
+            "required": [
+                "email"
+            ],
+            "properties": {
+                "email": {
+                    "type": "String"
+                },
+                "confirm_password": {
+                    "type": "String"
+                },
+                "new_password": {
+                    "type": "String"
+                }
+            }
+        },
+        "Enquiries (for save)": {
+            "required": [
+                "user_id"
+            ],
+            "properties": {
+                "user_id": {
+                    "type": "String"
+                },
+                "first_name": {
+                    "type": "String"
+                },
+                "last_name": {
+                    "type": "String"
+                },
+                "middle_name": {
+                    "type": "String"
+                },
+                "job_title": {
+                    "type": "Number"
+                },
+                "company_name": {
+                    "type": "String"
+                },
+                "message": {
+                    "type": "String"
+                },
+                "company_size": {
+                    "type": "Number"
+                },
+                "phone_number": {
+                    "type": "Number"
+                },
+                "work_email": {
+                    "type": "String"
+                },
+                "how_you_are": {
+                    "type": "String"
+                },
+                "designation": {
+                    "type": "String"
+                },
+                "type_of": {
+                    "type": "String"
+                }
+            }
+        },
+        "Enquiries (for List)": {
+            "properties": {
+                "page": {
+                    "type": "Number",
+                    "description": "Pagination page number (by default 1)"
+                },
+                "page_size": {
+                    "type": "Number",
+                    "description": "Page size particular show one page (by default 10)"
+                },
+                "sort_by": {
+                    "type": "String",
+                    "description": "ascending and dascending (by default dascending)"
+                },
+                "search_name": {
+                    "type": "String",
+                    "description": "any charcter (only first name)"
+                },
+                "sort_by_column": {
+                    "type": "Column name same",
+                    "description": "Column name  (by default created_at)"
+                },
+                "status_filter": {
+                    "type": "Number",
+                    "description": "Use the enum value ( pending = 11, archive = 4)"
+                }
+            }
+        },
+        "Enquiries (for status update)": {
+            "properties": {
+                "page": {
+                    "status": "Number"
+                },
+                "enquiries_id": {
+                    "type": "array",
+                    "description": "Bulk update"
+                }
+            }
+        },
+        "Attendance (for punhin)": {
+            "required": [
+                "punchin_id"
+            ],
+            "properties": {
+                "punchin_id": {
+                    "type": "String",
+                    "description": "Default punch in time zero send"
+                }
+            }
+        },
+        "Attendance (for punchout)": {
+            "required": [
+                "punchin_id"
+            ],
+            "properties": {
+                "punchin_id": {
+                    "type": "String"
+                }
+            }
+        },
+        "Attendance (for show monthly attendance)": {
+            "properties": {
+                "year": {
+                    "type": "String"
+                },
+                "month": {
+                    "type": "String"
+                }
+            }
+        },
+        "Attendance (for List)": {
+            "properties": {
+                "page": {
+                    "type": "Number",
+                    "description": "Pagination page number (by default 1)"
+                },
+                "page_size": {
+                    "type": "Number",
+                    "description": "Page size particular show one page (by default 10)"
+                },
+                "sort_by": {
+                    "type": "String",
+                    "description": "ascending and dascending (by default dascending)"
+                },
+                "search_name": {
+                    "type": "String",
+                    "description": "any charcter (only first name)"
+                },
+                "sort_by_column": {
+                    "type": "Column name same",
+                    "description": "Column name  (by default created_at)"
+                },
+                "company_id": {
+                    "type": "String",
+                    "description": "Company id"
+                },
+                "days_filter": {
+                    "type": "Number",
+                    "description": " today : 1,last_week : 2, this_month : 3 (only value)"
+                },
+                "start_date": {
+                    "type": "String",
+                    "description": "Particular date data filter"
+                }
+            }
+        },
+        "Attendance (for force puchin)": {
+            "required": [
+                "first_name",
+                "last_name",
+                "company_name"
+            ],
+            "properties": {
+                "first_name": {
+                    "type": "String"
+                },
+                "last_name": {
+                    "type": "String"
+                },
+                "middle_name": {
+                    "type": "String"
+                },
+                "company_id": {
+                    "type": "String"
+                },
+                "company_name": {
+                    "type": "String"
+                },
+                "shift_id": {
+                    "type": "String"
+                },
+                "shift_name": {
+                    "type": "String"
+                },
+                "punchin_id": {
+                    "type": "String"
+                },
+                "punchin_time": {
+                    "type": "Date"
+                }
+            }
+        },
+        "Attendance (for change status)": {
+            "required": [
+                "_id",
+                "status"
+            ],
+            "properties": {
+                "_id": {
+                    "type": "String"
+                },
+                "status": {
+                    "type": "String",
+                    "description": "Enum value use for this (persent = 7, absent = 8, leave = 10 ,half_day : 9  "
+                },
+                "punch_in": {
+                    "type": "String"
+                },
+                "punch_out": {
+                    "type": "String"
+                }
+            }
+        },
+        "Report (for employee status)": {
+            "properties": {
+                "search_name": {
+                    "type": "String",
+                    "description": "Employee name search"
+                },
+                "status_filter": {
+                    "type": "String",
+                    "description": "Enum value use for this (active = 1, deactive = 2, pause = 3 "
+                },
+                "company_id": {
+                    "type": "String",
+                    "description": "Filter by company "
+                }
+            }
+        },
+        "Report (for employee payout)": {
+            "properties": {
+                "search_name": {
+                    "type": "String",
+                    "description": "Employee name search"
+                },
+                "status_filter": {
+                    "type": "String",
+                    "description": "Enum value use for this (credited = 13, rejected = 12, hold = 15 "
+                },
+                "company_id": {
+                    "type": "String",
+                    "description": "Filter by company "
+                },
+                "start_date_filter": {
+                    "type": "String",
+                    "description": "Select start date"
+                },
+                "end_date_filter": {
+                    "type": "String",
+                    "description": "Select end date"
+                }
+            }
+        },
+        "Report (for employer payout)": {
+            "properties": {
+                "search_name": {
+                    "type": "String",
+                    "description": "Employee name search"
+                },
+                "status_filter": {
+                    "type": "String",
+                    "description": "Enum value use for this (credited = 13, rejected = 12, hold = 15 "
+                },
+                "company_id": {
+                    "type": "String",
+                    "description": "Filter by company "
+                },
+                "user_id": {
+                    "type": "String",
+                    "description": "Filter by employee "
+                },
+                "start_date_filter": {
+                    "type": "String",
+                    "description": "Select start date"
+                },
+                "end_date_filter": {
+                    "type": "String",
+                    "description": "Select end date"
+                }
+            }
+        },
+        "Report (for settlement)": {
+            "properties": {
+                "search_name": {
+                    "type": "String",
+                    "description": "Employee name search"
+                },
+                "status": {
+                    "type": "String",
+                    "description": "Enum value use for this (active = 1, deactive = 2, pause = 3 "
+                },
+                "company_id": {
+                    "type": "String",
+                    "description": "Filter by company "
+                },
+                "month": {
+                    "type": "String",
+                    "description": "Select month"
+                },
+                "year": {
+                    "type": "String",
+                    "description": "Select year"
+                }
+            }
+        },
+        "Settlement (for generate)": {
+            "properties": {
+                "company_id": {
+                    "type": "String"
+                },
+                "month": {
+                    "type": "String",
+                    "description": "Select month"
+                },
+                "year": {
+                    "type": "String",
+                    "description": "Select year"
+                }
+            }
+        },
+        "Settlement (for list)": {
+            "properties": {
+                "page": {
+                    "type": "Number",
+                    "description": "Pagination page number (by default 1)"
+                },
+                "page_size": {
+                    "type": "Number",
+                    "description": "Page size particular show one page (by default 10)"
+                },
+                "sort_by": {
+                    "type": "String",
+                    "description": "ascending and dascending (by default dascending)"
+                },
+                "search_name": {
+                    "type": "String",
+                    "description": "any charcter (only first name)"
+                },
+                "sort_by_column": {
+                    "type": "Column name same",
+                    "description": "Column name  (by default created_at)"
+                }
+            }
+        },
+        "Settlement (for update settlement)": {
+            "properties": {
+                "settlement_id": {
+                    "type": "String"
+                },
+                "imps_number": {
+                    "type": "String"
+                },
+                "paid_amount": {
+                    "type": "Number"
+                },
+                "receipt_id": {
+                    "type": "String"
+                }
+            }
+        },
+        "Ledger (for list)": {
+            "properties": {
+                "page": {
+                    "type": "Number",
+                    "description": "Pagination page number (by default 1)"
+                },
+                "page_size": {
+                    "type": "Number",
+                    "description": "Page size particular show one page (by default 10)"
+                },
+                "sort_by": {
+                    "type": "String",
+                    "description": "ascending and dascending (by default dascending)"
+                },
+                "search_name": {
+                    "type": "String",
+                    "description": "any charcter (only first name)"
+                },
+                "sort_by_column": {
+                    "type": "Column name same",
+                    "description": "Column name  (by default created_at)"
+                },
+                "time_filter": {
+                    "type": "String",
+                    "description": "Enum value use for time filter (Last year = 6,  this weak = 7, Last three months = 8, This year = 5, last month = 4, This month = 3"
+                },
+                "status": {
+                    "type": "Number",
+                    "description": "Use enum value (credited = 13 , rejected = 14)"
+                },
+                "user_id": {
+                    "type": "String",
+                    "description": "Filter by employee"
+                },
+                "company_id": {
+                    "type": "String",
+                    "description": "Filter by employer"
+                }
+            }
+        },
+        "Request (for list)": {
+            "properties": {
+                "page": {
+                    "type": "Number",
+                    "description": "Pagination page number (by default 1)"
+                },
+                "page_size": {
+                    "type": "Number",
+                    "description": "Page size particular show one page (by default 10)"
+                },
+                "sort_by": {
+                    "type": "String",
+                    "description": "ascending and dascending (by default dascending)"
+                },
+                "search_name": {
+                    "type": "String",
+                    "description": "any charcter request id"
+                },
+                "sort_by_column": {
+                    "type": "Column name same",
+                    "description": "Column name  (by default created_at)"
+                },
+                "status_filter": {
+                    "type": "Number",
+                    "description": "Use enum value (pending = 11 , resolved = 18)"
+                },
+                "company_id": {
+                    "type": "String",
+                    "description": "Filter by employer"
+                }
+            }
+        },
+        "Request (for find)": {
+            "properties": {
+                "request_id": {
+                    "type": "String"
+                }
+            }
+        },
+        "Request (for save)": {
+            "properties": {
+                "request_type": {
+                    "type": "Number"
+                },
+                "details": {
+                    "type": "String"
+                },
+                "status": {
+                    "type": "Number"
+                }
+            }
+        },
+        "Request (for update)": {
+            "properties": {
+                "request_id": {
+                    "type": "Number"
+                },
+                "request_type": {
+                    "type": "Number"
+                },
+                "details": {
+                    "type": "String"
+                },
+                "status": {
+                    "type": "Number"
+                },
+                "response": {
+                    "type": "String"
+                }
+            }
+        },
+        "Request (for status update)": {
+            "properties": {
+                "request_id": {
+                    "type": "array",
+                    "description": "bulk  update"
+                },
+                "status": {
+                    "type": "Number"
+                }
+            }
+        },
+        "Csv download (for Rupyo admin)": {
+            "properties": {
+                "search_name": {
+                    "type": "String",
+                    "description": "any charcter (only first name)"
+                }
+            }
+        },
+        "Csv download(for Employer)": {
+            "properties": {
+                "search_name": {
+                    "type": "String",
+                    "description": "any charcter (only first name)"
+                },
+                "status_filter": {
+                    "type": "Number",
+                    "description": "Filter by status for like (active = 1 , deactive = 2, pause = 3)"
+                }
+            }
+        },
+        "Csv download (for Employee)": {
+            "properties": {
+                "search_name": {
+                    "type": "String",
+                    "description": "any charcter (only first name)"
+                },
+                "status_filter": {
+                    "description": "Use this enum value for like (Active: 1, deactive: 2, pause: 3)"
+                },
+                "employee_type": {
+                    "description": "Use this enum value for like (Part time: 2 full time: 1, weekly: 4, daily: 3)"
+                },
+                "company_id": {
+                    "description": "Any company wise filter"
+                }
+            }
+        },
+        "Csv download (for Transition)": {
+            "properties": {
+                "type": {
+                    "type": "Number",
+                    "description": "Enum value use for like rejected = 12 "
+                },
+                "year": {
+                    "type": "String",
+                    "description": "Date filter thisMonth = 3, lastYear = 6, thisYear = 5"
+                },
+                "page": {
+                    "type": "String",
+                    "description": "How to show this page"
+                },
+                "search_name": {
+                    "type": "String",
+                    "description": "any charcter (only first name)"
+                }
+            }
+        },
+        "Csv download (for Attendance)": {
+            "properties": {
+                "search_name": {
+                    "type": "String",
+                    "description": "any charcter (only first name)"
+                },
+                "company_id": {
+                    "type": "String",
+                    "description": "Company id"
+                },
+                "days_filter": {
+                    "type": "Number",
+                    "description": " today : 1,last_week : 2, this_month : 3 (only value)"
+                },
+                "start_date": {
+                    "type": "String",
+                    "description": "Particular date data filter"
+                }
+            }
+        },
+        "users (for s3 key store)": {
+            "properties": {
+                "s3_key": {
+                    "type": "String"
+                }
+            }
+        },
+        "Employer (for create)": {
+            "required": [
+                "first_name",
+                "last_name",
+                "email",
+                "mobile_number",
+                "user_id"
+            ],
+            "properties": {
+                "first_name": {
+                    "type": "String"
+                },
+                "last_name": {
+                    "type": "String"
+                },
+                "email": {
+                    "type": "String",
+                    "unique": true
+                },
+                "mobile_number": {
+                    "type": "Number"
+                },
+                "employee_id_generation_method": {
+                    "type": "Number"
+                },
+                "middle_name": {
+                    "type": "String"
+                },
+                "selfie": {
+                    "type": "String"
+                },
+                "company_name": {
+                    "type": "String"
+                },
+                "rupyo_credit_limit": {
+                    "type": "Number"
+                },
+                "company_size": {
+                    "type": "Number"
+                },
+                "set_payout_limit": {
+                    "type": "Date"
+                },
+                "company_cin": {
+                    "type": "Number"
+                },
+                "user_object_id": {
+                    "type": "Number",
+                    "description": "Create time zero pass"
+                },
+                "pan_card": {
+                    "type": "string",
+                    "description": "Encryption pan_card"
+                },
+                "bank_detsils": {
+                    "type": "object",
+                    "properties": {
+                        "bank_name": {
+                            "type": "string",
+                            "description": " Encryption bank name"
+                        },
+                        "account_number": {
+                            "type": "String",
+                            "description": "Encryption account number"
+                        },
+                        "ifsc_type": {
+                            "type": "String",
+                            "description": "Encryption ifsc code"
+                        }
+                    }
+                },
+                "address": {
+                    "type": "object",
+                    "properties": {
+                        "address_1": {
+                            "type": "string"
+                        },
+                        "address_2": {
+                            "type": "String"
+                        },
+                        "city": {
+                            "type": "String"
+                        },
+                        "state": {
+                            "type": "string"
+                        },
+                        "country": {
+                            "type": "String"
+                        },
+                        "pincode": {
+                            "type": "Number"
+                        }
+                    }
+                }
+            }
+        },
+        "Employer (for update)": {
+            "required": [
+                "first_name",
+                "last_name",
+                "mobile_number",
+                "emp_object_id"
+            ],
+            "properties": {
+                "first_name": {
+                    "type": "String"
+                },
+                "last_name": {
+                    "type": "String"
+                },
+                "mobile_number": {
+                    "type": "Number"
+                },
+                "middle_name": {
+                    "type": "String"
+                },
+                "company_name": {
+                    "type": "String"
+                },
+                "weekly_holiday": {
+                    "type": "array"
+                },
+                "rupyo_credit_limit": {
+                    "type": "Number"
+                },
+                "company_size": {
+                    "type": "Number"
+                },
+                "set_payout_limit": {
+                    "type": "Number"
+                },
+                "company_cin": {
+                    "type": "Number"
+                },
+                "user_id": {
+                    "type": "String"
+                },
+                "pan_card": {
+                    "type": "string",
+                    "description": "Encryption pan_card"
+                },
+                "bank_detsils": {
+                    "type": "object",
+                    "properties": {
+                        "bank_name": {
+                            "type": "string",
+                            "description": " Encryption bank name"
+                        },
+                        "account_number": {
+                            "type": "String",
+                            "description": "Encryption account number"
+                        },
+                        "ifsc_type": {
+                            "type": "String",
+                            "description": "Encryption ifsc code"
+                        }
+                    }
+                },
+                "address": {
+                    "type": "object",
+                    "properties": {
+                        "address_1": {
+                            "type": "string"
+                        },
+                        "address_2": {
+                            "type": "String"
+                        },
+                        "city": {
+                            "type": "String"
+                        },
+                        "state": {
+                            "type": "string"
+                        },
+                        "country": {
+                            "type": "String"
+                        },
+                        "pincode": {
+                            "type": "Number"
+                        }
+                    }
+                }
+            }
+        },
+        "Employer(for status bulk)": {
+            "properties": {
+                "employee_id": {
+                    "type": "array",
+                    "description": "Bulk update the status"
+                },
+                "status": {
+                    "type": "Number",
+                    "description": "Bulk update the status"
+                }
+            }
+        },
+        "Employer (for find)": {
+            "properties": {
+                "user_id": {
+                    "type": "String"
+                }
+            }
+        },
+        "Employer (for List)": {
+            "properties": {
+                "page": {
+                    "type": "Number",
+                    "description": "Pagination page number (by default 1)"
+                },
+                "page_size": {
+                    "type": "Number",
+                    "description": "Page size particular show one page (by default 10)"
+                },
+                "sort_by": {
+                    "type": "String",
+                    "description": "ascending and dascending (by default dascending)"
+                },
+                "search_name": {
+                    "type": "String",
+                    "description": "any charcter (only first name)"
+                },
+                "sort_by_column": {
+                    "type": "Column name same",
+                    "description": "Column name  (by default created_at)"
+                },
+                "status_filter": {
+                    "type": "Number",
+                    "description": "Filter by status for like (active = 1 , deactive = 2, pause = 3)"
+                }
+            }
+        },
+        "Employer(for credit limit update)": {
+            "properties": {
+                "company_id": {
+                    "type": "String"
+                },
+                "rupyo_credit_limit": {
+                    "type": "Number",
+                    "description": "Update the multiple  credit limit"
+                }
+            }
+        },
+        "Employer(for credit limit request)": {
+            "properties": {
+                "rupyo_credit_limit": {
+                    "type": "Number",
+                    "description": "Request rupyo admin"
+                }
+            }
+        },
+        "Employer(for forgotpasswordrequest )": {
+            "properties": {
+                "email": {
+                    "type": "String"
+                }
+            }
+        },
+        "Employer(for  get password )": {
+            "properties": {
+                "email": {
+                    "type": "String"
+                }
+            }
+        },
+        "Employer(for profile)": {
+            "properties": {
+                "company_id": {
+                    "type": "String"
+                }
+            }
+        },
+        "Employee(for  employeeRegistration)": {
+            "properties": {
+                "company_code": {
+                    "type": "String",
+                    "description": "Rupyo platfrom register 8 digit"
+                },
+                "mobile_number": {
+                    "type": "Number",
+                    "description": "Rupyo platfrom register and 10 digit"
+                }
+            }
+        },
+        "Employee (for otp verify)": {
+            "properties": {
+                "token": {
+                    "type": "String"
+                },
+                "otp": {
+                    "type": "Number",
+                    "description": "6 digit"
+                }
+            }
+        },
+        "Employee(for generate pin)": {
+            "properties": {
+                "token": {
+                    "type": "String",
+                    "description": "forget password"
+                },
+                "pin": {
+                    "type": "String",
+                    "description": "4 digit"
+                },
+                "verify_pin": {
+                    "type": "String",
+                    "description": "4 digit"
+                }
+            }
+        },
+        "Employee (for resend otp)": {
+            "properties": {
+                "mobile_number": {
+                    "type": "Number"
+                }
+            }
+        },
+        "Employee(for login)": {
+            "properties": {
+                "mobile_number": {
+                    "type": "Number",
+                    "description": "10 digit"
+                },
+                "pin": {
+                    "type": "Number",
+                    "description": " 4 digit pin "
+                }
+            }
+        },
+        "Employee(for verify bank details)": {
+            "properties": {
+                "status": {
+                    "type": "Number",
+                    "description": "only 'correct': 5, 'not_correct': 6 (only value)"
+                }
+            }
+        },
+        "Employee (for forget pin request)": {
+            "properties": {
+                "mobile_number": {
+                    "type": "Number"
+                }
+            }
+        },
+        "Employee (for forget pin time otp verify)": {
+            "properties": {
+                "otp": {
+                    "type": "Number"
+                },
+                "token": {
+                    "type": "String"
+                }
+            }
+        },
+        "Employee (for reset pin)": {
+            "properties": {
+                "pin": {
+                    "type": "Number"
+                },
+                "verify_pin": {
+                    "type": "Number"
+                },
+                "token": {
+                    "type": "String"
+                }
+            }
+        },
+        "Employee(for change pin)": {
+            "properties": {
+                "old_pin": {
+                    "type": "String",
+                    "description": "4 digit"
+                },
+                "verify_pin": {
+                    "type": "String",
+                    "description": "4 digit"
+                },
+                "new_pin": {
+                    "type": "String",
+                    "description": "4 digit"
+                }
+            }
+        },
+        "Employee (for upload selefie)": {
+            "properties": {
+                "selfie": {
+                    "type": "String"
+                }
+            }
+        },
+        "Transition (for payout request)": {
+            "properties": {
+                "amount": {
+                    "type": "Number"
+                }
+            }
+        },
+        "Transition (for employee List)": {
+            "properties": {
+                "type": {
+                    "type": "Number",
+                    "description": "Enum value use for like rejected = 12 "
+                },
+                "year": {
+                    "type": "String",
+                    "description": "Date filter thisMonth = 3, lastYear = 6, thisYear = 5"
+                },
+                "page": {
+                    "type": "String",
+                    "description": "How to show this page"
+                },
+                "search_name": {
+                    "type": "String",
+                    "description": "any charcter (only first name)"
+                }
+            }
+        },
+        "Transition (for web list)": {
+            "properties": {
+                "company_id": {
+                    "type": "String",
+                    "description": "Employer by filter"
+                },
+                "user_id": {
+                    "type": "String",
+                    "description": "Employee by filter"
+                },
+                "status": {
+                    "type": "Number",
+                    "description": "Enum value use for like rejected = 12 "
+                },
+                "time_filter": {
+                    "type": "Number",
+                    "description": "this_month = 0, last_month = 1,  last_year = 2, last_three_months = 3 (only send value)"
+                },
+                "page": {
+                    "type": "Number",
+                    "description": "Pagination page number (by default 1)"
+                },
+                "page_size": {
+                    "type": "Number",
+                    "description": "Page size particular show one page (by default 10)"
+                },
+                "sort_by": {
+                    "type": "String",
+                    "description": "ascending and dascending (by default dascending)"
+                },
+                "sort_by_column": {
+                    "type": "Column name same",
+                    "description": "Column name  (by default created_at)"
+                }
+            }
+        },
+        "Transition (for update status)": {
+            "properties": {
+                "_id": {
+                    "type": "String"
+                },
+                "status": {
+                    "type": "Number"
+                },
+                "imps_receipt_link": {
+                    "type": "file"
+                },
+                "transaction_message": {
+                    "type": "String"
+                },
+                "imps_receipt_number": {
+                    "type": "Number"
+                }
+            }
+        }
+    }
+}

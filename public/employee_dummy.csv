@@ -1,0 +1,4 @@
+sr_no,first_name,middle_name,last_name,gender,dob,father_mother_name,cibil_score,employee_id,email,mobile_number,pc_account_number,esi_no,uan,aadhar_card,pan_card,name_in_bank,account_number,bank_name,ifsc_code,branch_name,bank_account_type,basic_pay,additions,deductions,net_pay,rupyo_credit_limit,pay_cycle,advance_given,address_1,address_2,pincode,city,district,state,country,remarks
+1,Aadil ,,Khan,F,,,,UJKINM85691245,aadil11@gmail.com,1111111111,,,,1.11E+11,PLWPG5811L,test1,1.23E+15,HDFC,AXIZ0000128,Gumasta,C,30000,0,0,30000,15000,1,,GPO,,457001,Ratlam,district,MP,India,
+2,Rohit ,,Sharma,M,,,,OPLIUJKI856910,rohit11@gmail.com,2222222222,,,,2.22E+11,PLWPG5809L,test1,1.23E+15,AXIS,AXIZ0000128,Gumasta,S,20000,0,0,20000,10000,1,,Sarwate,,452001,Indore,district,MP,India,
+3,Sujit,,Sharma,O,,,,IKJU8569121414,sujit11@yahoo.com,3333333333,,,,3.33E+11,PLWPG5809L,test1,1.23E+15,BOB,AXIZ0000128,Gumasta,O,15000,0,0,15000,5000,1,,Gandhi Marg,,856922,Ujjain,district,MP,India,
